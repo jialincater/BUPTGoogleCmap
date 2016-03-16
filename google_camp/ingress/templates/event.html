@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+
+	<meta charset='utf-8'>
+
+
+<meta content='width=device-width,initial-scale=1,maximum-scale=1' name='viewport'>
+<meta content='ShuttleCat is with you all the time.' name='description'>
+
+
+<title>Ingress | Google Camp</title>
+<link href='http://115.28.28.165/img/ShuttleCatLOGOMiniC.png' rel='icon' type='images/ico'>
+  <meta charset="UTF-8">
+    <link href="http://7xlk6d.com1.z0.glb.clouddn.com/sticky-footer-navbar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.css">
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/jquery.min.js"></script>
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand"> Google Camp</a>
+        </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/reg">社员注册 <span class="sr-only">(current)</span></a></li>
+        <li ><a href="/activities">活动通知</a></li>
+        <li class="active"><a href="/ingress">Ingress</a></li>
+        <li><a href="/news">新闻</a></li>
+      </ul>
+                <form class="navbar-form navbar-right" method="POST" action="event">
+            <div class="form-group">
+              <input type="text" placeholder="AgentID" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">登录</button>
+          </form>
+    </div><!-- /.navbar-collapse -->
+
+      </div>
+
+    </nav>
+<body>
+    <div class="container">
+      <div class="row">
+
+
+        <div class="page-header">
+          <h2>Ingress 北邮起⑧<small>在线注册</small></h2>
+        </div>
+      </div>
+      <div class="row">
+                <div class="col-md-3 col-md-offset-2">
+          <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">用户信息</h3>
+              </div>
+              <div class="panel-body">
+                <p>Welcome,Agent &nbsp;<b>{{my.name}}</b> | <a href="/user/logout">登出</a></p>
+                <p>电子邮件:&nbsp;<b>{{my.mail}}</b></p>
+                <p>等级:&nbsp;<b>{{my.level}}</b></p>
+                <form method="POST" action="join"> 
+                    {% csrf_token %}
+                    <div class="row">
+                    <div class="col-md-12">
+                      <input type='hidden' name='name' value={{my.name}} /> 
+                      <input type='hidden' name='password' value={{my.password}} /> 
+                      <button type="submit" class="btn btn-info btn-block">确认参与</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+                    <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">起八信息</h3>
+            </div>
+            <div class="panel-body">
+              <p>时间：<b>10月25日，晚7点</b></p>
+              <p>地点：<b>北京邮电大学/北京师范大学</b></p>
+              <p>参与人数：<b>{{num}}</b></p>
+            </div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">参与者</h3>
+            </div>
+            <div class="panel-body">
+                        <table class="table">
+            <thead>
+              <tr>
+                <th>Agent Name</th>
+                <th>Level</th>
+                <th>确认参与</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for agent in join  %}
+              <tr>
+                <td>{{agent.name}}</td>
+                <td>{{agent.level}}</td>
+                <td><a class="btn btn-warning btn-xs" role="button">是</a></td>
+              </tr>
+              {% endfor %}
+              {% for agent in unjoin  %}
+              <tr>
+                <td><a class="btn btn-warning btn-xs" role="button">{{agent.name}}</a></td>
+                <td>{{agent.level}}</td>                
+                <td><a class="btn btn-info btn-xs" role="button">否</a></td>
+              </tr>
+              {% endfor %}
+            <tbody>
+          </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+          <footer class="footer">
+      <div class="container">
+        <p class="text-muted">2006-2015©BUPT Google Camp</p>
+      </div>
+    </footer>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

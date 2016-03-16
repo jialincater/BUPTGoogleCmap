@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+
+	<meta charset='utf-8'>
+
+
+<meta content='width=device-width,initial-scale=1,maximum-scale=1' name='viewport'>
+<meta content='ShuttleCat is with you all the time.' name='description'>
+
+
+<title>Ingress | Google Camp</title>
+<link href='http://115.28.28.165/img/ShuttleCatLOGOMiniC.png' rel='icon' type='images/ico'>
+  <meta charset="UTF-8">
+    <link href="http://7xlk6d.com1.z0.glb.clouddn.com/sticky-footer-navbar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.css">
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/jquery.min.js"></script>
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand"> Google Camp</a>
+        </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/reg">社员注册 <span class="sr-only">(current)</span></a></li>
+        <li ><a href="/activities">活动通知</a></li>
+        <li class="active"><a href="/ingress">Ingress</a></li>
+        <li><a href="/news">新闻</a></li>
+      </ul>
+                <form class="navbar-form navbar-right" method="POST" action="event">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="AgentID" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" name="password" class="form-control">
+            </div>
+             {% csrf_token %} 
+            <button type="submit" class="btn btn-success">登录</button>
+          </form>
+    </div><!-- /.navbar-collapse -->
+
+      </div>
+
+    </nav>
+
+    <div class="container" style="margin-bottom: 60px;">
+      <div class="row">
+        <div class="page-header">
+          <h2>Ingress 北邮起⑧<small>在线注册</small></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+{% if success %}
+          <p><h1>报名成功</h1></p>
+          <p><h1><small>我们已经给您发了一封确认邮件，请查收您的邮件获得更多信息</small></h1></p>
+          <p><h5>同时，为防止友军盗取相关信息，我们会在审核通过后开放给您更多信息。请静候佳音。</h5></p>
+{% endif %}
+{% if pw %}
+          <p><h1>喔喔喔</h1></p>
+          <p><h1><small>两次密码输入不一致</small></h1></p>
+{% endif %}
+{% if repeat %}
+          <p><h1>错误</h1></p>
+          <p><h1><small>您的ID已经注册过了，如有疑问请联系Agent JialinCater或buptjialin#icloud.com</small></h1></p>
+
+{% endif %}
+{% if not success %}
+        <form method="POST" action=""> 
+          {% csrf_token %}
+            {{ form|crispy}}
+
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-info btn-block">报名</button>
+              </div>
+
+            </div>
+</form>
+{% endif %}
+
+        </div>
+      </div>
+
+
+
+
+
+          <footer class="footer">
+      <div class="container">
+        <p class="text-muted">2006-2015©BUPT Google Camp</p>
+      </div>
+    </footer>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

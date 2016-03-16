@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+
+	<meta charset='utf-8'>
+
+
+<meta content='width=device-width,initial-scale=1,maximum-scale=1' name='viewport'>
+<meta content='ShuttleCat is with you all the time.' name='description'>
+
+
+<title>活动信息 | Google Camp</title>
+<link href='http://115.28.28.165/img/ShuttleCatLOGOMiniC.png' rel='icon' type='images/ico'>
+  <meta charset="UTF-8">
+    <link href="http://7xlk6d.com1.z0.glb.clouddn.com/sticky-footer-navbar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.css">
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/jquery.min.js"></script>
+  <script src="http://7xlk6d.com1.z0.glb.clouddn.com/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand"> Google Camp</a>
+        </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/reg">社员注册 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/activities">活动信息</a></li>
+        <li><a href="/ingress">Ingress</a></li>
+        <li><a href="/news">新闻</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+      </div>
+
+    </nav>
+<body>
+    <div class="container" style="margin-bottom: 60px;">
+      <div class="row">
+        <div class="page-header">
+          <h2>Google Camp <small>活动信息</small></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">参观谷歌中国总部</h3>
+            </div>
+            <div class="panel-body">
+              <p>时间：<b>2015年12月23日</b></p>
+              <p>地点：<b>五道口谷歌中国总部</b></p>
+              <p>内容：<b>体验谷歌文化，了解谷歌高大上的工作环境</b></p>
+              <p>人数：<b>限报10人</b></p>
+              <a class="btn btn-sm btn-success" target="_blank" role="button">在右边填入信息立即报名</a>
+            </div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">参加GDG-dev-fest</h3>
+            </div>
+            <div class="panel-body">
+              <p>时间：<b>2015年11月8日</b></p>
+              <p>地点：<b>北航新主楼</b></p>
+              <p>内容：<b>Dev-fest</b></p>
+
+            </div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">第一次迎新茶话会</h3>
+            </div>
+            <div class="panel-body">
+              <p>时间：<b>2015年10月26日晚18：30</b></p>
+              <p>地点：<b>3-317</b></p>
+              <p>内容：<b>活动介绍，社团介绍，技术分享</b></p>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">报名参观谷歌总部</h3>
+            </div>
+            <div class="panel-body">
+              <form method="POST" action="gogogo"> 
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="姓名" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" placeholder="手机" name="phone" class="form-control">
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                   <button type="submit" disabled="disabled" class="btn btn-info btn-block">报名未开始</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+           <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">报名Dev-fest</h3>
+            </div>
+            <div class="panel-body">
+              <form method="POST" action="gogogo"> 
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="姓名" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" placeholder="手机" name="phone" class="form-control">
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                   <button type="submit" disabled="disabled" class="btn btn-info btn-block">Dev-fest报名结束</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+    <footer class="footer">
+      <div class="container" >
+        <p class="text-muted">2006-2015©BUPT Google Camp</p>
+      </div>
+    </footer>
+</body>
+</html>
